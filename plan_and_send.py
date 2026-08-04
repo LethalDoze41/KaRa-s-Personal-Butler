@@ -28,6 +28,14 @@ from google.genai import types
 BASE_DIR = Path(__file__).parent
 PREFERENCES_FILE = BASE_DIR / "preferences.json"
 HISTORY_FILE = BASE_DIR / "meal_history.json"
+
+
+def clean_secret(value: str) -> str:
+    """Strip whitespace and invisible characters (e.g. non-breaking spaces, \\xa0) that
+    sometimes get carried along when copy-pasting secrets like Gmail App Passwords from a
+    web page into GitHub Secrets. Also drops internal spaces, since Gmail displays the App
+    Password in space-separated groups but the real value has none."""
+    return "".join(value.split())
 PANTRY_FILE = BASE_DIR / "pantry.json"
 
 
@@ -149,12 +157,12 @@ Respond with ONLY valid JSON, no markdown fences, matching exactly this shape:
 
 
 def call_gemini(prompt: str) -> dict:
-    api_key = os.environ["GEMINI_API_KEY"]
+    api_key = clean_secret(os.environ["GEMINI_API_KEY"])
     # Google periodically retires model versions. If this starts 404ing again, check
     # https://ai.google.dev/gemini-api/docs/models for the current free-tier Flash model
     # and either edit the default below or set a GEMINI_MODEL repo secret to override it
     # without touching code.
-    model = os.environ.get("GEMINI_MODEL") or "gemini-3.5-flash"
+    model = clean_secret(os.environ.get("GEMINI_MODEL") or "") or "gemini-3.5-flash"
     client = genai.Client(api_key=api_key)
 
     response = client.models.generate_content(
@@ -212,9 +220,9 @@ def format_whatsapp_body(plan: dict) -> str:
 # ---------- 4. Send it ----------
 
 def send_email(subject: str, body: str):
-    gmail_address = os.environ["GMAIL_ADDRESS"]
-    gmail_app_password = os.environ["GMAIL_APP_PASSWORD"]
-    recipient = os.environ.get("RECIPIENT_EMAIL", gmail_address)
+    gmail_address = clean_secret(os.environ["GMAIL_ADDRESS"])
+    gmail_app_password = clean_secret(os.environ["GMAIL_APP_PASSWORD"])
+    recipient = clean_secret(os.environ.get("RECIPIENT_EMAIL", gmail_address))
 
     msg = MIMEText(body)
     msg["Subject"] = subject
@@ -235,6 +243,8 @@ def send_whatsapp(body: str):
     if not phone or not api_key:
         print("CallMeBot credentials not set — skipping WhatsApp send.")
         return
+    phone = clean_secret(phone)
+    api_key = clean_secret(api_key)
 
     import urllib.parse
     import requests
