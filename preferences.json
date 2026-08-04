@@ -1,16 +1,25 @@
+
 {
-  "people": 2,
-  "household_note": "Cooking for a couple, portions should be sized for 2 adults per meal",
-
-  "health_goals": "Moderate calories, high protein, minimize deep-fried food to once a week, prefer whole grains over refined, go light on added sugar",
-
+  "household_note": "Cooking for two adults",
+  "people": [
+    {
+      "name": "Karthik",
+      "goals": "Currently 235 lbs, working toward 170 lbs over about a year. Heart health is the top priority. Already walking ~2 miles daily.",
+      "dietary_restrictions": "Can eat chicken, eggs, and all vegetables"
+    },
+    {
+      "name": "Raksha",
+      "goals": "Currently 170 lbs, working toward 140 lbs and reducing waist fat. Works out 3x/week at Orangetheory.",
+      "dietary_restrictions": "Vegetarian plus eggs only — no meat"
+    }
+  ],
+  "shared_health_notes": "Both are actively working toward weight loss — favor lighter preparations (less oil/ghee, baked or minimally fried), good protein per meal, portion-conscious rather than large-batch comfort-food portions",
   "cuisine_mix": "Roughly 70% Karnataka / South Indian (e.g. bisi bele bath, akki rotti, saaru, palya, dosa/idli varieties, Mangalorean and Udupi dishes), 30% rotating through other world cuisines (North Indian, Mediterranean, Italian, East Asian, etc.) so the week doesn't feel repetitive",
-
-  "meals_per_day": ["breakfast", "lunch", "dinner"],
-
-  "dietary_restrictions": "None specified — edit this field with any allergies, avoided ingredients, or restrictions (e.g. no red meat, low oil, no peanuts)",
-
+  "meals_per_day": [
+    "breakfast",
+    "lunch",
+    "dinner"
+  ],
   "weeks_of_history_to_avoid_repeating": 3,
-
   "shopping_day_note": "Grocery email is sent Saturday so shopping happens Sunday morning; the plan should cover the 7 days starting the following day"
 }
