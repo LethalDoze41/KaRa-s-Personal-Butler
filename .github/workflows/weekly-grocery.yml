@@ -28,6 +28,7 @@ jobs:
       - name: Generate plan and send
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
@@ -35,10 +36,10 @@ jobs:
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
         run: python plan_and_send.py
 
-      - name: Commit updated meal history
+      - name: Commit updated meal history and pantry state
         run: |
           git config user.name "grocery-bot"
           git config user.email "actions@github.com"
-          git add meal_history.json
-          git commit -m "Update meal history $(date +%Y-%m-%d)" || echo "No changes to commit"
+          git add meal_history.json pantry.json
+          git commit -m "Update meal history + pantry $(date +%Y-%m-%d)" || echo "No changes to commit"
           git push
