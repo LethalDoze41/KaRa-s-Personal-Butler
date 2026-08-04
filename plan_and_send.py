@@ -222,16 +222,22 @@ def format_whatsapp_body(plan: dict) -> str:
 def send_email(subject: str, body: str):
     gmail_address = clean_secret(os.environ["GMAIL_ADDRESS"])
     gmail_app_password = clean_secret(os.environ["GMAIL_APP_PASSWORD"])
-    recipient = clean_secret(os.environ.get("RECIPIENT_EMAIL", gmail_address))
+
+    # RECIPIENT_EMAIL supports one address or several, comma-separated
+    # (e.g. "karthik@gmail.com,raksha@gmail.com").
+    raw_recipients = os.environ.get("RECIPIENT_EMAIL", gmail_address)
+    recipients = [clean_secret(addr) for addr in raw_recipients.split(",") if addr.strip()]
+    if not recipients:
+        recipients = [gmail_address]
 
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = gmail_address
-    msg["To"] = recipient
+    msg["To"] = ", ".join(recipients)
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(gmail_address, gmail_app_password)
-        server.sendmail(gmail_address, [recipient], msg.as_string())
+        server.sendmail(gmail_address, recipients, msg.as_string())
 
 
 def send_whatsapp(body: str):
