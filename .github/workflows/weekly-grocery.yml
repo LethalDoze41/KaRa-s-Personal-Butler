@@ -1,0 +1,44 @@
+name: Weekly grocery list
+
+on:
+  schedule:
+    # 14:00 UTC Saturday ≈ 6-7am Pacific (depending on daylight saving).
+    # Adjust the hour to land wherever you want it in your inbox.
+    - cron: "0 14 * * 6"
+  workflow_dispatch: {}  # lets you trigger it manually from the Actions tab to test
+
+permissions:
+  contents: write  # needed so the workflow can commit the updated meal history back
+
+jobs:
+  send-grocery-list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate plan and send
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+        run: python plan_and_send.py
+
+      - name: Commit updated meal history
+        run: |
+          git config user.name "grocery-bot"
+          git config user.email "actions@github.com"
+          git add meal_history.json
+          git commit -m "Update meal history $(date +%Y-%m-%d)" || echo "No changes to commit"
+          git push
