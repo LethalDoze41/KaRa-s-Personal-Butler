@@ -28,6 +28,7 @@ from google.genai import types
 BASE_DIR = Path(__file__).parent
 PREFERENCES_FILE = BASE_DIR / "preferences.json"
 HISTORY_FILE = BASE_DIR / "meal_history.json"
+PANTRY_FILE = BASE_DIR / "pantry.json"
 
 
 # ---------- 1. Load config ----------
@@ -44,6 +45,20 @@ def load_history() -> list:
         return json.load(f)
 
 
+def load_pantry() -> dict:
+    if not PANTRY_FILE.exists():
+        return {"always_stocked": [], "low_stock": []}
+    with open(PANTRY_FILE, "r") as f:
+        return json.load(f)
+
+
+def reset_pantry_low_stock(pantry: dict):
+    """Clear the low_stock flags after a successful run — they've now been shopped for."""
+    pantry["low_stock"] = []
+    with open(PANTRY_FILE, "w") as f:
+        json.dump(pantry, f, indent=2)
+
+
 def recent_dishes(history: list, weeks: int) -> list:
     """Flatten dish names from the last `weeks` entries so we can tell the AI what to avoid."""
     dishes = []
@@ -57,7 +72,7 @@ def recent_dishes(history: list, weeks: int) -> list:
 
 # ---------- 2. Build the prompt and call Gemini ----------
 
-def build_prompt(preferences: dict, avoid_dishes: list, week_start: date) -> str:
+def build_prompt(preferences: dict, avoid_dishes: list, pantry: dict, week_start: date) -> str:
     meals = preferences.get("meals_per_day", ["breakfast", "lunch", "dinner"])
     day_names = [(week_start + timedelta(days=i)).strftime("%A") for i in range(7)]
 
@@ -66,13 +81,46 @@ def build_prompt(preferences: dict, avoid_dishes: list, week_start: date) -> str
         if avoid_dishes else "No recent history yet — any dishes are fine."
     )
 
-    return f"""
-You are a meal-planning and grocery-shopping assistant for a household of {preferences.get('people', 2)}.
+    always_stocked = set(pantry.get("always_stocked", []))
+    low_stock = set(pantry.get("low_stock", []))
+    # Anything flagged low_stock should be treated as needed, even if it's normally a staple.
+    excluded = always_stocked - low_stock
 
-Health goals: {preferences.get('health_goals')}
-Dietary restrictions: {preferences.get('dietary_restrictions')}
+    pantry_text = (
+        "The following are kept stocked in the pantry — do NOT include them in the "
+        f"grocery list under any name/variant: {', '.join(sorted(excluded))}."
+        if excluded else "No standing pantry staples are configured."
+    )
+    if low_stock:
+        pantry_text += (
+            " The following ARE currently needed even though some are normally staples — "
+            f"make sure they appear on the grocery list: {', '.join(sorted(low_stock))}."
+        )
+
+    people = preferences.get("people", [])
+    people_text = "\n".join(
+        f"- {p.get('name')}: goal — {p.get('goals')}; can eat — {p.get('dietary_restrictions')}"
+        for p in people
+    ) or "No individual profiles configured."
+
+    return f"""
+You are a meal-planning and grocery-shopping assistant for a household of {len(people) or 2}.
+
+Household members and their individual goals/restrictions:
+{people_text}
+
+Shared notes: {preferences.get('shared_health_notes')}
+
+Plan meals that work for everyone eating together where possible. Since dietary
+restrictions differ between household members, default to dishes compatible with the
+MOST restrictive person's diet, and where a dish would normally include meat, treat the
+meat as an optional add-on portion for whichever household member(s) can eat it (call
+this out explicitly in that day's meal name, e.g. "Vegetable curry (+ grilled chicken for
+Karthik)"), rather than planning entirely separate meals.
+
 Cuisine mix: {preferences.get('cuisine_mix')}
 {avoid_text}
+{pantry_text}
 
 Plan meals for these {len(day_names)} days: {", ".join(day_names)}.
 Include these meals each day: {", ".join(meals)}.
@@ -102,10 +150,15 @@ Respond with ONLY valid JSON, no markdown fences, matching exactly this shape:
 
 def call_gemini(prompt: str) -> dict:
     api_key = os.environ["GEMINI_API_KEY"]
+    # Google periodically retires model versions. If this starts 404ing again, check
+    # https://ai.google.dev/gemini-api/docs/models for the current free-tier Flash model
+    # and either edit the default below or set a GEMINI_MODEL repo secret to override it
+    # without touching code.
+    model = os.environ.get("GEMINI_MODEL") or "gemini-3.5-flash"
     client = genai.Client(api_key=api_key)
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model=model,
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -209,12 +262,13 @@ def update_history(history: list, plan: dict, keep_weeks: int) -> list:
 def main():
     preferences = load_preferences()
     history = load_history()
+    pantry = load_pantry()
     avoid = recent_dishes(history, preferences.get("weeks_of_history_to_avoid_repeating", 3))
 
     # Shopping happens the day after this runs (Saturday run -> Sunday start).
     week_start = date.today() + timedelta(days=1)
 
-    prompt = build_prompt(preferences, avoid, week_start)
+    prompt = build_prompt(preferences, avoid, pantry, week_start)
     plan = call_gemini(prompt)
 
     email_body = format_email_body(plan)
@@ -226,6 +280,10 @@ def main():
     keep_weeks = max(preferences.get("weeks_of_history_to_avoid_repeating", 3), 1) + 1
     update_history(history, plan, keep_weeks)
     print("History updated.")
+
+    # Only clear the low_stock flags once everything above succeeded.
+    reset_pantry_low_stock(pantry)
+    print("Pantry low_stock flags reset.")
 
 
 if __name__ == "__main__":
