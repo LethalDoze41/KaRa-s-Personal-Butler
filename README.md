@@ -11,8 +11,9 @@ send too. Runs entirely on free tiers: **$0/month.**
 - **Meal planning + grocery list**: Google Gemini API (free tier — no credit card needed).
 - **Email**: your own Gmail account via SMTP (free).
 - **WhatsApp (optional)**: CallMeBot's free personal WhatsApp API.
-- **Memory**: `meal_history.json` in the repo tracks recent weeks so meals don't repeat;
-  the workflow commits the update back to the repo after each run.
+- **Memory**: `meal_history.json` tracks recent weeks so meals don't repeat, and
+  `pantry.json` tracks staples you already have so they're not re-added every week; the
+  workflow commits both back to the repo after each run.
 
 ## One-time setup (about 20 minutes)
 
@@ -49,10 +50,29 @@ It's rate-limited and meant for personal use, not production — fine for this.
    with country code, no `+`) and `CALLMEBOT_APIKEY`.
 4. If you skip this, the script just skips WhatsApp and only sends email — that's fine.
 
-### 6. Edit `preferences.json`
-This is where you define your health goals, cuisine mix, dietary restrictions, and how
-many past weeks to avoid repeating. Edit it directly (it's a plain file in the repo, no
-UI needed) whenever your goals change.
+### 6. Edit `preferences.json` and `pantry.json`
+`preferences.json` has a `people` list — one entry per household member with their own
+`goals` and `dietary_restrictions` — plus shared settings like cuisine mix and how many
+past weeks to avoid repeating. The AI defaults to dishes that work for whoever has the
+tighter restriction, and treats anything only some people can eat (e.g. meat) as an
+optional add-on portion rather than planning separate meals.
+
+`pantry.json` is currently seeded from your real 102-item pantry list (exported from the
+"Current Pantry Items" tab of your Personal Butler sheet). It's split into:
+- `always_stocked` — excluded from every grocery list.
+- `low_stock` — anything flagged as needing a top-up; shows up on the next list even
+  though it's normally a staple, then auto-clears after that run.
+
+To keep it current: whenever your real pantry list changes meaningfully, re-export that
+sheet tab as CSV and send it over and it'll get rebuilt the same way. For quick one-off
+exceptions ("running low on toor dal this week"), just add the item to `low_stock`
+directly — no need to re-export anything.
+
+**If you'd rather this stay in sync automatically:** the sheet itself currently isn't
+reachable by the bot (I hit a permissions error trying to fetch it). If you set its
+sharing to "Anyone with the link → Viewer," I can add a step that pulls the live sheet
+each Saturday instead of relying on you to re-send exports — let me know and I'll wire
+that in.
 
 ### 7. Test it manually before trusting the schedule
 In the repo: **Actions tab → "Weekly grocery list" → Run workflow.** This uses the same
@@ -92,7 +112,7 @@ python plan_and_send.py
 
 ## Ideas for later, if you want to extend it
 
-- Track ingredients you already have on hand (a small "pantry.json") so the grocery list
-  subtracts what you don't need to buy.
 - Ask Gemini to also output a rough calorie/protein estimate per day against your goals.
 - Add a second weekday reminder (e.g. Wednesday) with just what's left to cook that week.
+- Extend `pantry.json` beyond dry staples to semi-perishables you tend to always have
+  (e.g. onions, garlic, ginger) if that matches your actual shopping habits.
