@@ -38,17 +38,32 @@ def clean_secret(value: str) -> str:
     return "".join(value.split())
 
 
+_SYNONYM_PHRASES = {
+    # A conservative, curated list — only unambiguous 1:1 naming variants, applied as
+    # whole-phrase substitution before tokenization. Deliberately excludes anything with
+    # real ambiguity (e.g. broad "chickpeas" is NOT aliased to "chana dal" — whole
+    # chickpeas/garbanzo and split chana dal are genuinely different products).
+    "chana dal": "bengal gram split",
+    "channa dal": "bengal gram split",
+    "cilantro": "coriander",
+}
+
+
 def normalize_item_name(s: str) -> frozenset:
     """Normalize an ingredient name for matching pantry entries against grocery-list items.
     Strips a single trailing "(...)" annotation (used for local-language names, e.g.
-    "Toor Dal (Togari Bele)" -> "Toor Dal"), then returns a set of lowercased, singularized
-    words rather than a literal string — so "Green Gram (Whole)" and "Whole Green Gram"
-    match despite differing word order. Deliberately does NOT strip other qualifiers like
-    "(Split)" or "(Whole)" earlier in the name — those distinguish genuinely different
-    products, and as a differing word they correctly break the match (e.g. "Green Gram
-    (Split Skinless)" vs. "Whole Green Gram" share only 2 of 3-4 words, so they won't match)."""
+    "Toor Dal (Togari Bele)" -> "Toor Dal"), applies a small curated synonym list for common
+    naming variants (e.g. "Chana Dal" -> "Bengal Gram Split"), then returns a set of
+    lowercased, singularized words rather than a literal string — so "Green Gram (Whole)"
+    and "Whole Green Gram" match despite differing word order. Deliberately does NOT strip
+    other qualifiers like "(Split)" or "(Whole)" earlier in the name — those distinguish
+    genuinely different products, and as a differing word they correctly break the match
+    (e.g. "Green Gram (Split Skinless)" vs. "Whole Green Gram" share only 2 of 3-4 words,
+    so they won't match)."""
     s = re.sub(r"\s*\([^()]*\)\s*$", "", s)
     s = s.lower().strip()
+    for phrase, canonical in _SYNONYM_PHRASES.items():
+        s = s.replace(phrase, canonical)
     s = re.sub(r"[^\w\s]", " ", s)
     words = []
     for word in s.split():
