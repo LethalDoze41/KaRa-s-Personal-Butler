@@ -45,5 +45,52 @@
         "dinner": "Mixed Vegetable Sambar, steamed Ragi Idli (+ Air-fried Chicken Tikka bites for Karthik)"
       }
     ]
+  },
+  {
+    "week_start": "2026-08-05",
+    "days": [
+      {
+        "day": "Wednesday",
+        "breakfast": "Oats & Rava Idli with Pudina (Mint) Chutney",
+        "lunch": "Majjige Huli (Ash Gourd in light yogurt gravy) served with Red Rice and Padavalakai (Snake Gourd) Palya",
+        "dinner": "Shakshuka (Poached Eggs in Tomato-Bell Pepper Sauce) with a slice of Whole Wheat Toast"
+      },
+      {
+        "day": "Thursday",
+        "breakfast": "Sajje (Pearl Millet) Rotti served with Tomato Gojju",
+        "lunch": "Leftover Majjige Huli served with Red Rice and Padavalakai Palya",
+        "dinner": "Tofu Stir-fry with Broccoli and Bell Peppers in Garlic-Sesame Sauce (+ Air-fried Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Friday",
+        "breakfast": "Sprouted Horsegram (Hurali) Usli with grated coconut garnish",
+        "lunch": "Basoppu (Spinach) Tovve with Foxtail Millet (Navane) and Bendekayi (Okra) Palya",
+        "dinner": "Chickpea Lentil Pasta in Marinara Sauce with Mixed Veggies (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Saturday",
+        "breakfast": "Scrambled Egg Whites & Whole Egg (1 whole + 2 whites each) with Spinach and Mushrooms on Multigrain Toast",
+        "lunch": "Leftover Basoppu Tovve with Foxtail Millet and Bendekayi Palya",
+        "dinner": "Mavinkayi (Raw Mango) Chitranna using Quinoa, served with Chana Dal Kosambari (+ Grilled Lemon-Herb Chicken for Karthik)"
+      },
+      {
+        "day": "Sunday",
+        "breakfast": "Red Rice Batter Dosa (low-fat version) with a small portion of Potato Palya and Coconut-Chana Dal Chutney",
+        "lunch": "Eerulli (Onion) Benson Saaru with Foxtail Millet and Gajar (Carrot) Palya",
+        "dinner": "Mexican Black Bean & Quinoa Bowl with Corn, Peppers, Avocado, and Fresh Salsa (+ Grilled Fajita Chicken for Karthik)"
+      },
+      {
+        "day": "Monday",
+        "breakfast": "Egg Appam (with thin vegetable stew containing carrots and peas)",
+        "lunch": "Leftover Eerulli Benson Saaru with Foxtail Millet and Gajar Palya",
+        "dinner": "North Indian Style Palak Paneer (made with low-fat paneer) with baked Whole Wheat Rotis"
+      },
+      {
+        "day": "Tuesday",
+        "breakfast": "Godhi Nuchu (Broken Wheat) Upma loaded with mixed vegetables",
+        "lunch": "Udupi-style Massoppu (mixed greens and lentil mash) with Red Rice and Alasande (Black-eyed peas) Usli",
+        "dinner": "Greek Chickpea, Cucumber, and Feta Salad with a light vinaigrette (+ Oregano-Garlic Grilled Chicken Breast for Karthik)"
+      }
+    ]
   }
 ]
