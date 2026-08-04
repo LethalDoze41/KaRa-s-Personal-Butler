@@ -36,6 +36,69 @@ def clean_secret(value: str) -> str:
     web page into GitHub Secrets. Also drops internal spaces, since Gmail displays the App
     Password in space-separated groups but the real value has none."""
     return "".join(value.split())
+
+
+def normalize_item_name(s: str) -> frozenset:
+    """Normalize an ingredient name for matching pantry entries against grocery-list items.
+    Strips a single trailing "(...)" annotation (used for local-language names, e.g.
+    "Toor Dal (Togari Bele)" -> "Toor Dal"), then returns a set of lowercased, singularized
+    words rather than a literal string — so "Green Gram (Whole)" and "Whole Green Gram"
+    match despite differing word order. Deliberately does NOT strip other qualifiers like
+    "(Split)" or "(Whole)" earlier in the name — those distinguish genuinely different
+    products, and as a differing word they correctly break the match (e.g. "Green Gram
+    (Split Skinless)" vs. "Whole Green Gram" share only 2 of 3-4 words, so they won't match)."""
+    s = re.sub(r"\s*\([^()]*\)\s*$", "", s)
+    s = s.lower().strip()
+    s = re.sub(r"[^\w\s]", " ", s)
+    words = []
+    for word in s.split():
+        if word.endswith("es") and len(word) > 3:
+            word = word[:-2]
+        elif word.endswith("s") and not word.endswith("ss") and len(word) > 2:
+            word = word[:-1]
+        words.append(word)
+    return frozenset(words)
+
+
+def resolve_pantry(pantry: dict):
+    """Splits always_stocked into (excluded, needed) based on low_stock flags, matching by
+    normalized name so a low_stock entry like "toor dal" correctly matches an always_stocked
+    entry like "Toor Dal (Togari Bele)" despite the exact strings differing."""
+    always_stocked = pantry.get("always_stocked", [])
+    low_stock = pantry.get("low_stock", [])
+    low_stock_norms = {normalize_item_name(x) for x in low_stock}
+
+    excluded, needed = [], []
+    for entry in always_stocked:
+        if normalize_item_name(entry) in low_stock_norms:
+            needed.append(entry)
+        else:
+            excluded.append(entry)
+
+    # A low_stock entry that isn't a recognized staple (e.g. a one-off "need onions this
+    # week" note) still counts as needed, even though it has no always_stocked match.
+    recognized_norms = {normalize_item_name(x) for x in always_stocked}
+    for entry in low_stock:
+        if normalize_item_name(entry) not in recognized_norms:
+            needed.append(entry)
+
+    return excluded, needed
+
+
+def filter_pantry_matches(plan: dict, excluded: list) -> dict:
+    """Safety net: even with an explicit prompt instruction, a 100+ item exclusion list
+    sometimes gets partially ignored. This deterministically drops any grocery-list item
+    that's an exact normalized match for a pantry item known to already be in stock."""
+    excluded_norms = {normalize_item_name(x) for x in excluded}
+
+    for category in plan.get("grocery_list", []):
+        category["items"] = [
+            item for item in category.get("items", [])
+            if normalize_item_name(item.get("name", "")) not in excluded_norms
+        ]
+
+    plan["grocery_list"] = [c for c in plan.get("grocery_list", []) if c.get("items")]
+    return plan
 PANTRY_FILE = BASE_DIR / "pantry.json"
 
 
@@ -89,20 +152,19 @@ def build_prompt(preferences: dict, avoid_dishes: list, pantry: dict, week_start
         if avoid_dishes else "No recent history yet — any dishes are fine."
     )
 
-    always_stocked = set(pantry.get("always_stocked", []))
-    low_stock = set(pantry.get("low_stock", []))
-    # Anything flagged low_stock should be treated as needed, even if it's normally a staple.
-    excluded = always_stocked - low_stock
+    excluded, needed = resolve_pantry(pantry)
 
     pantry_text = (
         "The following are kept stocked in the pantry — do NOT include them in the "
-        f"grocery list under any name/variant: {', '.join(sorted(excluded))}."
+        f"grocery list under any name/variant: {', '.join(sorted(excluded))}. Only skip an "
+        "item if it's genuinely the same product — if a recipe needs a different form (e.g. "
+        "whole vs. split, roasted vs. raw) than what's listed as stocked, still include it."
         if excluded else "No standing pantry staples are configured."
     )
-    if low_stock:
+    if needed:
         pantry_text += (
             " The following ARE currently needed even though some are normally staples — "
-            f"make sure they appear on the grocery list: {', '.join(sorted(low_stock))}."
+            f"make sure they appear on the grocery list: {', '.join(sorted(needed))}."
         )
 
     people = preferences.get("people", [])
@@ -286,6 +348,9 @@ def main():
 
     prompt = build_prompt(preferences, avoid, pantry, week_start)
     plan = call_gemini(prompt)
+
+    excluded, _ = resolve_pantry(pantry)
+    plan = filter_pantry_matches(plan, excluded)
 
     email_body = format_email_body(plan)
     send_email(subject=f"Grocery list — week of {plan.get('week_start')}", body=email_body)
