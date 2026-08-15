@@ -139,5 +139,52 @@
         "dinner": "Menthe Soppu (Fenugreek leaves) Dal, two Whole Wheat Rotis, and a fresh Cucumber-Tomato Kosambari (salad with a pinch of mustard tempering)"
       }
     ]
+  },
+  {
+    "week_start": "2026-08-16",
+    "days": [
+      {
+        "day": "Sunday",
+        "breakfast": "Adai Dosa (high-protein mixed lentil crepes cooked with minimal oil) served with Onion-Tomato Chutney",
+        "lunch": "Moolangi (Radish) Huli, Chavilikayi (Cluster Beans) Palya, Steamed Barnyard Millet, and Boiled Eggs (2 whites each, + 1 yolk for Karthik)",
+        "dinner": "Zucchini Noodles (Zoodles) in light Basil Pesto with Cherry Tomatoes & Tofu (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Monday",
+        "breakfast": "Ragi Vermicelli (Shavige) Upma loaded with carrots, green peas, and bell peppers, served with 2 scrambled egg whites each",
+        "lunch": "Leftover Moolangi Huli with Steamed Barnyard Millet, Moolangi Palya (Radish stir-fry), and Boiled Eggs (2 whites each)",
+        "dinner": "Lemon-Ginger Saaru (tangy lentil rasam), Steamed Quinoa, and Peanut & Cucumber Kosambari (+ Baked Chicken Breast for Karthik / Baked Tofu for Raksha)"
+      },
+      {
+        "day": "Tuesday",
+        "breakfast": "Egg Veggie Scramble (1 whole egg + 2 whites each) with spinach and bell peppers, served with 1 slice of Multigrain Toast",
+        "lunch": "Leftover Lemon-Ginger Saaru with Steamed Quinoa, Chavilikayi Palya, and Pan-seared Tofu portions",
+        "dinner": "Lighter Veg Hakka Noodles with Tofu & Mixed Vegetables (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Wednesday",
+        "breakfast": "Neer Dosa (thin rice crepes made with minimal oil) served with Coconut-Ginger Chutney and Steamed Sprouted Moong",
+        "lunch": "Thoor Dal Tovve (light split-pigeon-pea soup), Dantina Soppu (Amaranth Leaves) Palya, Steamed Barnyard Millet, and Pan-seared Tofu cubes",
+        "dinner": "North Indian style Baingan Bharta (smoky roasted eggplant mash) served with 2 Whole Wheat Rotis and cucumber salad (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Thursday",
+        "breakfast": "Onion Rava Dosa (thin, crispy semolina crepe cooked with drops of oil) served with Tomato-Mint Chutney and 2 Boiled Egg Whites each",
+        "lunch": "Leftover Thoor Dal Tovve, Steamed Barnyard Millet, Dantina Soppu Palya, and Boiled Eggs (2 whites each)",
+        "dinner": "Tuscan White Bean & Kale Soup with a small side green salad (+ Shredded Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Friday",
+        "breakfast": "Egg White Bhurji (1 whole egg + 2 whites each) with spinach and tomatoes, served with 1 Whole Wheat Roti",
+        "lunch": "Nellikayi (Amla) Saaru, Sprouted Moong Usli, Steamed Quinoa, and Boiled Eggs (2 whites each)",
+        "dinner": "Healthy Lentil and Vegetable Tacos in warm corn tortillas with fresh tomato salsa and avocado (+ Shredded Grilled Chicken for Karthik)"
+      },
+      {
+        "day": "Saturday",
+        "breakfast": "Whole Wheat Shavige Bath (vermicelli upma with mixed vegetables and lemon juice) served with 2 Boiled Egg Whites each",
+        "lunch": "Leftover Nellikayi Saaru, Sprouted Moong Usli, Steamed Quinoa, and Boiled Eggs (2 whites each)",
+        "dinner": "Whole Wheat Rotis served with Badanekayi (Eggplant) Gojju, pan-seared Tofu/Paneer, and a side of low-fat Curd (+ Grilled Chicken for Karthik)"
+      }
+    ]
   }
 ]
