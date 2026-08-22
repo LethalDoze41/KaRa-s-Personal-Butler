@@ -4,53 +4,6 @@
     "days": [
       {
         "day": "Wednesday",
-        "breakfast": "Ragi Idli with Tomato-Onion Chutney",
-        "lunch": "Steamed Brown Rice, Soutekayi (Cucumber) Huli, and Beans Palya",
-        "dinner": "Grilled Tofu & Vegetable Skewers (+ Grilled Chicken Breast for Karthik) with Mint-Coriander Chutney"
-      },
-      {
-        "day": "Thursday",
-        "breakfast": "Vegetable Oats Upma (cooked with minimal oil and loaded with carrots and peas)",
-        "lunch": "Leftover Soutekayi Huli, Brown Rice, and Cabbage Palya",
-        "dinner": "Paneer and Egg White Bhurji with Whole Wheat Rotis and Cucumber Salad"
-      },
-      {
-        "day": "Friday",
-        "breakfast": "Akki Roti (made with dill leaves, grated carrots, and minimal oil) with low-fat Cucumber-Yoghurt Dip",
-        "lunch": "Oats Bisi Bele Bath (high-fiber, low-oil version) served with low-fat Onion-Tomato Raita",
-        "dinner": "Stir-fried Tofu and Mixed Vegetables in Ginger-Soy Sauce (+ Stir-fried Chicken Breast for Karthik)"
-      },
-      {
-        "day": "Saturday",
-        "breakfast": "Vegetable Egg Omelet (made with 1 whole egg + 2 whites each) with Whole Wheat Toast",
-        "lunch": "Menthe (Fenugreek) Rice Pulao with sprouted moong and mixed vegetables, served with Cucumber Raita",
-        "dinner": "Udupi-style Tomato-Garlic Saaru, Red Rice, and Beetroot Palya"
-      },
-      {
-        "day": "Sunday",
-        "breakfast": "Pesarattu (Green Gram Dosa) with Ginger-Tamarind Chutney",
-        "lunch": "Mediterranean Quinoa Salad with chickpeas, cucumber, cherry tomatoes, olives, and light feta (+ Lemon-Herb Grilled Chicken for Karthik)",
-        "dinner": "Basale Soppu Saaru (Malabar Spinach Curry), Brown Rice, and Carrot-Cucumber Kosambari (salad with mustard tempering)"
-      },
-      {
-        "day": "Monday",
-        "breakfast": "Moong Dal Chilla (savory lentil crepes) with Green Chutney",
-        "lunch": "Leftover Basale Soppu Saaru with Brown Rice and Heerekai (Ridge Gourd) Palya",
-        "dinner": "Soppina Saaru (Dill and Spinach lentil curry) served with Ragi Mudde (Ragi balls) or Brown Rice"
-      },
-      {
-        "day": "Tuesday",
-        "breakfast": "Vegetable Dalia (broken wheat) Pongal",
-        "lunch": "Leftover Soppina Saaru with Brown Rice and Tondekayi (Ivy Gourd) Palya",
-        "dinner": "Mixed Vegetable Sambar, steamed Ragi Idli (+ Air-fried Chicken Tikka bites for Karthik)"
-      }
-    ]
-  },
-  {
-    "week_start": "2026-08-05",
-    "days": [
-      {
-        "day": "Wednesday",
         "breakfast": "Oats & Rava Idli with Pudina (Mint) Chutney",
         "lunch": "Majjige Huli (Ash Gourd in light yogurt gravy) served with Red Rice and Padavalakai (Snake Gourd) Palya",
         "dinner": "Shakshuka (Poached Eggs in Tomato-Bell Pepper Sauce) with a slice of Whole Wheat Toast"
@@ -184,6 +137,53 @@
         "breakfast": "Whole Wheat Shavige Bath (vermicelli upma with mixed vegetables and lemon juice) served with 2 Boiled Egg Whites each",
         "lunch": "Leftover Nellikayi Saaru, Sprouted Moong Usli, Steamed Quinoa, and Boiled Eggs (2 whites each)",
         "dinner": "Whole Wheat Rotis served with Badanekayi (Eggplant) Gojju, pan-seared Tofu/Paneer, and a side of low-fat Curd (+ Grilled Chicken for Karthik)"
+      }
+    ]
+  },
+  {
+    "week_start": "2026-08-23",
+    "days": [
+      {
+        "day": "Sunday",
+        "breakfast": "Steamed Ragi Idli served with Pudina-Tomato Chutney and 2 Boiled Egg Whites each",
+        "lunch": "Bisi Bele Bath (made with brown rice, toor dal, carrots, French beans, and peas, using minimal ghee) served with Cucumber-Tomato Kosambari",
+        "dinner": "Lentil Bolognese over Whole Wheat Spaghetti (+ Lean Ground Chicken Bolognese for Karthik) served with a side of steamed broccoli"
+      },
+      {
+        "day": "Monday",
+        "breakfast": "Oats Veggie Upma (rolled oats cooked with carrots, green peas, and onions) served with 2 Boiled Egg Whites each",
+        "lunch": "Leftover Lentil Bolognese over Whole Wheat Spaghetti (+ Lean Ground Chicken Bolognese for Karthik) with steamed broccoli",
+        "dinner": "Southekayi (Yellow Cucumber) Huli served with Steamed Foxtail Millet and Cabbage Palya (stir-fried cabbage with mustard seeds and minimal coconut)"
+      },
+      {
+        "day": "Tuesday",
+        "breakfast": "Akki Roti (made with minimal oil, incorporating grated carrots, dill leaves, and minced onions) served with 1 tbsp of low-fat curd and fresh cucumber slices",
+        "lunch": "Leftover Southekayi (Yellow Cucumber) Huli served with Steamed Foxtail Millet and Cabbage Palya",
+        "dinner": "Baked Falafel Wrap in a Whole Wheat Tortilla with hummus, shredded lettuce, diced tomatoes, and cucumber (+ Grilled Lemon-Herb Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Wednesday",
+        "breakfast": "Savory Oatmeal Congee cooked with ginger, scallions, and soy sauce, topped with a soft-boiled egg (+ Shredded Poached Chicken Breast for Karthik)",
+        "lunch": "Leftover Baked Falafel Wrap in a Whole Wheat Tortilla with hummus, lettuce, tomato, and cucumber (+ Grilled Lemon-Herb Chicken Breast for Karthik)",
+        "dinner": "Thili Saaru (light tomato-tamarind soup) served with Steamed Brown Rice and Seeme Badanekayi (Chayote Squash) Palya"
+      },
+      {
+        "day": "Thursday",
+        "breakfast": "Steamed Pundi (Udupi rice dumplings) served with light Tomato-Onion Chutney and 2 Boiled Egg Whites each",
+        "lunch": "Leftover Thili Saaru served with Steamed Brown Rice and Seeme Badanekayi (Chayote Squash) Palya",
+        "dinner": "Udupi-style Basale Soppu (Malabar Spinach) Gassi (made with a light coconut-chili paste) served with Steamed Little Millet and Gajar (Carrot) Kosambari"
+      },
+      {
+        "day": "Friday",
+        "breakfast": "Ragi Ganji (savory finger millet porridge made with low-fat buttermilk and curry leaves) served with a 2-egg white omelet cooked with cooking spray",
+        "lunch": "Leftover Udupi-style Basale Soppu Gassi served with Steamed Little Millet and Gajar Kosambari",
+        "dinner": "Lighter Chana Masala (chickpea curry cooked with minimal oil) served with 2 Whole Wheat Rotis and a fresh green salad (+ Baked Chicken Tikka for Karthik)"
+      },
+      {
+        "day": "Saturday",
+        "breakfast": "Steamed Ammini Kozhukattai (spiced mini rice flour dumplings) served with light coriander-mint chutney",
+        "lunch": "Leftover Lighter Chana Masala (+ Baked Chicken Tikka for Karthik) served with 2 Whole Wheat Rotis",
+        "dinner": "Sorekayi (Bottle Gourd) Kootu (light lentil and gourd stew) served with Steamed Red Rice and Balekayi (Raw Banana) Podi (spice-coated and air-fried with minimal oil)"
       }
     ]
   }
