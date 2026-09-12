@@ -1,52 +1,5 @@
 [
   {
-    "week_start": "2026-08-09",
-    "days": [
-      {
-        "day": "Sunday",
-        "breakfast": "Jolada Rotti (Sorghum flatbread) served with Yennegai (stuffed baby eggplants prepared with minimal oil and spices)",
-        "lunch": "Hesaru Bele Thove (light Moong Dal soup), Steamed Little Millet, and Harive Soppu Palya (Amaranth leaves stir-fry with minimal coconut)",
-        "dinner": "Thai Green Curry with Tofu and Mixed Vegetables (+ Steamed Chicken Breast for Karthik) served with a small portion of Brown Jasmine Rice"
-      },
-      {
-        "day": "Monday",
-        "breakfast": "Ragi Roti (finger millet flatbread with minced onions and green chilies, made with minimal oil) served with Mint-Coriander Chutney",
-        "lunch": "Leftover Thai Green Curry with Tofu and Mixed Vegetables (+ Steamed Chicken Breast for Karthik) with Brown Jasmine Rice",
-        "dinner": "Menasina Saaru (fiery black pepper and tamarind rasam), Steamed Brown Rice, and Sorekayi (Bottle Gourd) Palya"
-      },
-      {
-        "day": "Tuesday",
-        "breakfast": "Erulli Poha (flattened rice with onions, curry leaves, and a touch of turmeric, cooked with minimal oil) served with Roasted Chana Dal Chutney",
-        "lunch": "Leftover Menasina Saaru with Steamed Brown Rice and Kumbalkayi (Pumpkin) Palya",
-        "dinner": "Baked Paneer Tikka Wrap (using low-fat paneer, bell peppers, onions, and whole wheat tortilla) (+ Grilled Chicken Tikka Wrap for Karthik)"
-      },
-      {
-        "day": "Wednesday",
-        "breakfast": "Steamed Paddu (savory dumplings made with black gram and brown rice batter, cooked in a non-stick appe pan with drops of oil) served with Tomato Chutney",
-        "lunch": "Leftover Kumbalkayi (Pumpkin) Palya served with two Whole Wheat Rotis and a small bowl of Dal Tadka (yellow lentils cooked with tomatoes)",
-        "dinner": "Hearty Minestrone Soup (packed with zucchini, celery, carrots, tomatoes, and kidney beans) (+ Shredded Grilled Chicken Breast for Karthik) with a small green side salad"
-      },
-      {
-        "day": "Thursday",
-        "breakfast": "Baked Spanish Omelette (made with egg whites, 1 whole egg, sliced onions, and boiled potato slices, baked with minimal oil) (+ diced grilled chicken breast for Karthik)",
-        "lunch": "Leftover Hearty Minestrone Soup (+ Shredded Grilled Chicken Breast for Karthik) served with a slice of toasted Sourdough Bread",
-        "dinner": "Jeerige Saaru (soothing cumin and black pepper rasam), Steamed Kodo Millet, and Sorekayi (Bottle Gourd) Palya"
-      },
-      {
-        "day": "Friday",
-        "breakfast": "Balehannu (Banana) Wheat Flour Dosa (sweet-savory crepes made with mashed ripe banana, whole wheat flour, and cardamom, cooked with drops of ghee)",
-        "lunch": "Udupi-style Huruli Saaru (Horsegram lentil curry), Steamed Brown Rice, and Knol Kol (Kohlrabi) Palya",
-        "dinner": "Fresh Vietnamese Spring Rolls (rice paper rolls wrapped around tofu, rice vermicelli, cucumber, carrots, mint, and cilantro) (+ Poached Chicken Breast for Karthik) served with a light peanut dipping sauce"
-      },
-      {
-        "day": "Saturday",
-        "breakfast": "Set Dosa (soft, spongy, low-oil crepes) served with Vegetable Saagu (mixed vegetable curry made with a light poppy seed and coconut paste)",
-        "lunch": "Leftover Huruli Saaru (Horsegram curry), Steamed Brown Rice, and Knol Kol (Kohlrabi) Palya",
-        "dinner": "Menthe Soppu (Fenugreek leaves) Dal, two Whole Wheat Rotis, and a fresh Cucumber-Tomato Kosambari (salad with a pinch of mustard tempering)"
-      }
-    ]
-  },
-  {
     "week_start": "2026-08-16",
     "days": [
       {
@@ -184,6 +137,53 @@
         "breakfast": "Sajje Rotti (Pearl millet flatbread) served with Dry Peanut Chutney Powder and fresh cucumber slices",
         "lunch": "Udupi-style Touthe (Yellow Cucumber) Koddel (lentil-coconut curry) served with Steamed Browntop Millet and Bendekayi (Okra) Palya",
         "dinner": "Leftover Udupi-style Touthe Koddel served with Steamed Browntop Millet and Bendekayi Palya"
+      }
+    ]
+  },
+  {
+    "week_start": "2026-09-13",
+    "days": [
+      {
+        "day": "Sunday",
+        "breakfast": "Menthe (Fenugreek) Ragi Roti made with minimal oil, served with 2 boiled egg whites each",
+        "lunch": "Padavalakai (Snake Gourd) Palya, Thoor Dal Rasam, and Steamed Brown Rice (+ Grilled Chicken Breast for Karthik)",
+        "dinner": "Lighter Minestrone Soup loaded with kidney beans, zucchini, and carrots, served with 1 slice of toasted whole-wheat bread (+ grilled chicken breast for Karthik)"
+      },
+      {
+        "day": "Monday",
+        "breakfast": "Palak (Spinach) Brown Rice Avalakki (Poha) cooked with minimal oil, served with 2 boiled egg whites each",
+        "lunch": "Leftover Lighter Minestrone Soup with a side of mixed green salad (+ grilled chicken breast for Karthik)",
+        "dinner": "Air-fried Suvarnagadde (Yam) Podi, Udupi-style Tomato Saaru, Steamed Kodo Millet, and Pan-seared Tofu portions (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Tuesday",
+        "breakfast": "Oats & Moong Dal Chilla (savory crepes) served with tomato-mint chutney and 2 boiled egg whites each",
+        "lunch": "Leftover Udupi-style Tomato Saaru served with Steamed Kodo Millet, Air-fried Suvarnagadde Podi, and Pan-seared Tofu (+ Grilled Chicken Breast for Karthik)",
+        "dinner": "Menthya Soppu (Fenugreek Leaves) Brown Rice Bhath served with a side of low-fat cucumber raita (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Wednesday",
+        "breakfast": "Godhi Rava (Broken Wheat) Pongal cooked with yellow moong dal and minimal ghee, served with 2 boiled egg whites each",
+        "lunch": "Heerekayi (Ridge Gourd) Tovve, Padavalakai (Snake Gourd) Palya, and Steamed Brown Rice (+ Pan-seared Chicken Breast for Karthik)",
+        "dinner": "Thai Green Curry with Tofu, broccoli, and bell peppers, served with Steamed Jasmine Brown Rice (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Thursday",
+        "breakfast": "Pesarattu (Whole Green Gram Crepe) served with ginger-onion chutney and 2 boiled egg whites each",
+        "lunch": "Leftover Thai Green Curry with Tofu and vegetables, served with Jasmine Brown Rice (+ Grilled Chicken Breast for Karthik)",
+        "dinner": "Basale Soppu (Malabar Spinach) Saaru served with Steamed Kodo Millet and Alasande (Black-eyed Pea) Palya (+ Baked Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Friday",
+        "breakfast": "Savory Roasted Ragi Flour (Hurihittu) Porridge made with low-fat buttermilk and curry leaves, served with 2 boiled egg whites each",
+        "lunch": "Leftover Basale Soppu Saaru served with Steamed Kodo Millet and Alasande Palya (+ Baked Chicken Breast for Karthik)",
+        "dinner": "North Indian style Yellow Dal Tadka, Bhindi Masala (okra stir-fry with minimal oil), and Jeera Brown Rice (+ Tandoori-style Grilled Chicken for Karthik / Tandoori Tofu for Raksha)"
+      },
+      {
+        "day": "Saturday",
+        "breakfast": "Erulli (Onion) Brown Rice Uttapam cooked with drops of oil, served with fresh coriander chutney and 2 boiled egg whites each",
+        "lunch": "Leftover Yellow Dal Tadka, Bhindi Masala, and Jeera Brown Rice (+ Tandoori-style Grilled Chicken for Karthik / Tandoori Tofu for Raksha)",
+        "dinner": "Healthy Mexican Burrito Bowl with Brown Rice, black beans, corn, fresh salsa, avocado, shredded lettuce, and grilled tofu (+ Grilled Fajita Chicken Breast for Karthik)"
       }
     ]
   }
