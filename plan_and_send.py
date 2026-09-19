@@ -18,6 +18,7 @@ import os
 import re
 import smtplib
 import sys
+import time
 from datetime import date, timedelta
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -233,7 +234,7 @@ Respond with ONLY valid JSON, no markdown fences, matching exactly this shape:
 """.strip()
 
 
-def call_gemini(prompt: str) -> dict:
+def call_gemini(prompt: str, max_attempts: int = 4) -> dict:
     api_key = clean_secret(os.environ["GEMINI_API_KEY"])
     # Google periodically retires model versions. If this starts 404ing again, check
     # https://ai.google.dev/gemini-api/docs/models for the current free-tier Flash model
@@ -242,18 +243,37 @@ def call_gemini(prompt: str) -> dict:
     model = clean_secret(os.environ.get("GEMINI_MODEL") or "") or "gemini-3.5-flash"
     client = genai.Client(api_key=api_key)
 
-    response = client.models.generate_content(
-        model=model,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-        ),
-    )
+    last_error = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = client.models.generate_content(
+                model=model,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                ),
+            )
+            raw = response.text.strip()
+            # Safety net in case the model wraps the JSON in a code fence anyway.
+            raw = re.sub(r"^```(json)?|```$", "", raw, flags=re.MULTILINE).strip()
+            return json.loads(raw)
+        except Exception as e:
+            last_error = e
+            # 503/UNAVAILABLE means the model is temporarily overloaded — the SDK's own
+            # built-in retries already tried a few short backoffs and gave up, so wait
+            # meaningfully longer here before trying again. Free tier + a weekly job means
+            # there's no cost to being patient.
+            if attempt < max_attempts:
+                wait_seconds = 60 * attempt  # 60s, 120s, 180s, ...
+                print(
+                    f"Gemini call failed (attempt {attempt}/{max_attempts}): {e}\n"
+                    f"Waiting {wait_seconds}s before retrying..."
+                )
+                time.sleep(wait_seconds)
+            else:
+                print(f"Gemini call failed (attempt {attempt}/{max_attempts}): {e}\nGiving up.")
 
-    raw = response.text.strip()
-    # Safety net in case the model wraps the JSON in a code fence anyway.
-    raw = re.sub(r"^```(json)?|```$", "", raw, flags=re.MULTILINE).strip()
-    return json.loads(raw)
+    raise last_error
 
 
 # ---------- 3. Format the message ----------
@@ -352,6 +372,27 @@ def update_history(history: list, plan: dict, keep_weeks: int) -> list:
 
 # ---------- main ----------
 
+def notify_failure(reason: str):
+    """Best-effort failure notification email, sent when the run can't complete for any
+    reason. Wrapped in its own try/except so a broken notification (e.g. the same Gmail
+    secret that's missing) doesn't mask the real error in the logs/exit code."""
+    try:
+        send_email(
+            subject="Grocery list bot — today's run failed",
+            body=(
+                "This week's automated grocery list run hit an error and didn't complete "
+                "— no meal plan or grocery list was generated this week.\n\n"
+                f"Reason: {reason}\n\n"
+                "If this looks like a temporary issue (e.g. Gemini overloaded), you can "
+                "just re-run it manually from the repo's Actions tab once things have "
+                "settled. Otherwise it may need a fix."
+            ),
+        )
+        print("Failure notification email sent.")
+    except Exception as notify_error:
+        print(f"Also failed to send failure notification email: {notify_error}", file=sys.stderr)
+
+
 def main():
     preferences = load_preferences()
     history = load_history()
@@ -386,5 +427,12 @@ if __name__ == "__main__":
     try:
         main()
     except KeyError as e:
-        print(f"Missing required environment variable/secret: {e}", file=sys.stderr)
+        msg = f"Missing required environment variable/secret: {e}"
+        print(msg, file=sys.stderr)
+        notify_failure(msg)
+        sys.exit(1)
+    except Exception as e:
+        msg = f"{type(e).__name__}: {e}"
+        print(msg, file=sys.stderr)
+        notify_failure(msg)
         sys.exit(1)
