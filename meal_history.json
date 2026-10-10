@@ -1,52 +1,5 @@
 [
   {
-    "week_start": "2026-09-13",
-    "days": [
-      {
-        "day": "Sunday",
-        "breakfast": "Menthe (Fenugreek) Ragi Roti made with minimal oil, served with 2 boiled egg whites each",
-        "lunch": "Padavalakai (Snake Gourd) Palya, Thoor Dal Rasam, and Steamed Brown Rice (+ Grilled Chicken Breast for Karthik)",
-        "dinner": "Lighter Minestrone Soup loaded with kidney beans, zucchini, and carrots, served with 1 slice of toasted whole-wheat bread (+ grilled chicken breast for Karthik)"
-      },
-      {
-        "day": "Monday",
-        "breakfast": "Palak (Spinach) Brown Rice Avalakki (Poha) cooked with minimal oil, served with 2 boiled egg whites each",
-        "lunch": "Leftover Lighter Minestrone Soup with a side of mixed green salad (+ grilled chicken breast for Karthik)",
-        "dinner": "Air-fried Suvarnagadde (Yam) Podi, Udupi-style Tomato Saaru, Steamed Kodo Millet, and Pan-seared Tofu portions (+ Grilled Chicken Breast for Karthik)"
-      },
-      {
-        "day": "Tuesday",
-        "breakfast": "Oats & Moong Dal Chilla (savory crepes) served with tomato-mint chutney and 2 boiled egg whites each",
-        "lunch": "Leftover Udupi-style Tomato Saaru served with Steamed Kodo Millet, Air-fried Suvarnagadde Podi, and Pan-seared Tofu (+ Grilled Chicken Breast for Karthik)",
-        "dinner": "Menthya Soppu (Fenugreek Leaves) Brown Rice Bhath served with a side of low-fat cucumber raita (+ Grilled Chicken Breast for Karthik)"
-      },
-      {
-        "day": "Wednesday",
-        "breakfast": "Godhi Rava (Broken Wheat) Pongal cooked with yellow moong dal and minimal ghee, served with 2 boiled egg whites each",
-        "lunch": "Heerekayi (Ridge Gourd) Tovve, Padavalakai (Snake Gourd) Palya, and Steamed Brown Rice (+ Pan-seared Chicken Breast for Karthik)",
-        "dinner": "Thai Green Curry with Tofu, broccoli, and bell peppers, served with Steamed Jasmine Brown Rice (+ Grilled Chicken Breast for Karthik)"
-      },
-      {
-        "day": "Thursday",
-        "breakfast": "Pesarattu (Whole Green Gram Crepe) served with ginger-onion chutney and 2 boiled egg whites each",
-        "lunch": "Leftover Thai Green Curry with Tofu and vegetables, served with Jasmine Brown Rice (+ Grilled Chicken Breast for Karthik)",
-        "dinner": "Basale Soppu (Malabar Spinach) Saaru served with Steamed Kodo Millet and Alasande (Black-eyed Pea) Palya (+ Baked Chicken Breast for Karthik)"
-      },
-      {
-        "day": "Friday",
-        "breakfast": "Savory Roasted Ragi Flour (Hurihittu) Porridge made with low-fat buttermilk and curry leaves, served with 2 boiled egg whites each",
-        "lunch": "Leftover Basale Soppu Saaru served with Steamed Kodo Millet and Alasande Palya (+ Baked Chicken Breast for Karthik)",
-        "dinner": "North Indian style Yellow Dal Tadka, Bhindi Masala (okra stir-fry with minimal oil), and Jeera Brown Rice (+ Tandoori-style Grilled Chicken for Karthik / Tandoori Tofu for Raksha)"
-      },
-      {
-        "day": "Saturday",
-        "breakfast": "Erulli (Onion) Brown Rice Uttapam cooked with drops of oil, served with fresh coriander chutney and 2 boiled egg whites each",
-        "lunch": "Leftover Yellow Dal Tadka, Bhindi Masala, and Jeera Brown Rice (+ Tandoori-style Grilled Chicken for Karthik / Tandoori Tofu for Raksha)",
-        "dinner": "Healthy Mexican Burrito Bowl with Brown Rice, black beans, corn, fresh salsa, avocado, shredded lettuce, and grilled tofu (+ Grilled Fajita Chicken Breast for Karthik)"
-      }
-    ]
-  },
-  {
     "week_start": "2026-09-20",
     "days": [
       {
@@ -184,6 +137,53 @@
         "breakfast": "Shavige Bhath (Whole wheat vermicelli upma with mixed vegetables and minimal oil) served with 2 boiled egg whites each",
         "lunch": "Leftover Mediterranean Shakshuka served with 1 slice of artisanal sourdough bread (+ Grilled Chicken strips for Karthik)",
         "dinner": "Balekayi (Raw Banana) Sasive (coconut-mustard-yogurt curry) served with Steamed Sona Masoori Rice and Grated Carrot & Dill Leaves Palya (+ Grilled Lemon-Herb Chicken for Karthik)"
+      }
+    ]
+  },
+  {
+    "week_start": "2026-10-11",
+    "days": [
+      {
+        "day": "Sunday",
+        "breakfast": "Navane (Foxtail Millet) Dosa served with mild Peanut-Chana Dal Chutney and 2 Boiled Egg Whites each",
+        "lunch": "Alasande Kalu (Black-eyed Peas) Saaru served with Steamed Brown Rice and Suvarnagadde (Yam) Palya (+ Baked Chicken Breast for Karthik)",
+        "dinner": "East Asian Steamed Eggplant and Firm Tofu in Garlic-Soy Glaze served with Brown Rice Noodles (+ Pan-seared Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Monday",
+        "breakfast": "Egg White Toast with Sliced Avocado, Tomato, and Cracked Black Pepper on 1 slice of whole wheat toast",
+        "lunch": "Leftover Alasande Kalu Saaru served with Steamed Brown Rice and Suvarnagadde Palya (+ Baked Chicken Breast for Karthik)",
+        "dinner": "Tondekayi (Ivy Gourd) Cashew Palya served with Steamed Kodo Millet and Hesaru Kalu (Whole Green Gram) Katte Saaru (+ Grilled Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Tuesday",
+        "breakfast": "Avalakki (Poha) Upma cooked with green peas, carrots, curry leaves, and minimal oil, served with 2 Boiled Egg Whites each",
+        "lunch": "Leftover Tondekayi Cashew Palya served with Steamed Kodo Millet and Hesaru Kalu Katte Saaru (+ Grilled Chicken Breast for Karthik)",
+        "dinner": "Mediterranean Greek-Style Stuffed Bell Peppers filled with Quinoa, Black Olives, Cherry Tomatoes, and Light Feta (+ Grilled Lemon-Herb Chicken for Karthik)"
+      },
+      {
+        "day": "Wednesday",
+        "breakfast": "Warm Chia & Oats Porridge made with low-fat milk, topped with sliced apple and walnuts, served with 2 Boiled Egg Whites each",
+        "lunch": "Leftover Mediterranean Greek-Style Stuffed Bell Peppers (+ Grilled Lemon-Herb Chicken for Karthik)",
+        "dinner": "Karnataka Mixed Vegetable Kootu (Chana dal and garden veg in coconut paste) served with Steamed Little Millet and Mullangi (Radish) Palya (+ Pan-seared Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Thursday",
+        "breakfast": "Ragi Rotti (cooked with onions, fresh curry leaves, and minimal oil) served with Roasted Chana Dal Chutney and 2 Boiled Egg Whites each",
+        "lunch": "Leftover Mixed Vegetable Kootu served with Steamed Little Millet and Mullangi Palya (+ Pan-seared Chicken Breast for Karthik)",
+        "dinner": "North Indian Yellow Moong Dal Tadka with Spinach served with 2 Whole Wheat Phulkas and Cucumber-Tomato Salad (+ Tandoori Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Friday",
+        "breakfast": "Steamed Dill Leaves & Moong Dal Idli served with Tomato-Garlic Chutney and 2 Boiled Egg Whites each",
+        "lunch": "Leftover Yellow Moong Dal Tadka with Spinach served with 2 Whole Wheat Phulkas and Cucumber-Tomato Salad (+ Tandoori Chicken Breast for Karthik)",
+        "dinner": "Noolkol (Kohlrabi) & Green Peas Curry served with Steamed Sona Masoori Brown Rice and Padavalakai (Snake Gourd) Palya (+ Pan-seared Lemon Chicken Breast for Karthik)"
+      },
+      {
+        "day": "Saturday",
+        "breakfast": "Baked Scrambled Egg Whites with diced bell peppers and tomatoes, served with 1 slice of whole wheat toast",
+        "lunch": "Leftover Noolkol & Green Peas Curry served with Steamed Sona Masoori Brown Rice and Padavalakai Palya (+ Pan-seared Lemon Chicken Breast for Karthik)",
+        "dinner": "Light Italian Layered Eggplant & Spinach Bake with fresh tomato marinara and minimal mozzarella, served with a side green salad (+ Grilled Herb Chicken Breast for Karthik)"
       }
     ]
   }
